@@ -2,10 +2,10 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class KniveScript : MonoBehaviour
+public class KnifeScript : MonoBehaviour
 {
     public Vector2 Dir;
-    [SerializeField] private GameObject knive;
+    [SerializeField] private GameObject knife;
     [SerializeField] private int damage; 
     [SerializeField] private float lifeSpan;
     [SerializeField] private float speed;    
@@ -15,7 +15,7 @@ public class KniveScript : MonoBehaviour
     
 
     private void Start(){
-        moveObject = new Move(knive, speed);
+        moveObject = new Move(knife, speed);
 
         throwRoutine = StartCoroutine("ThrowRoutine");
     }
@@ -27,7 +27,7 @@ public class KniveScript : MonoBehaviour
             // Mache schaden
             //int enemyHp = enemy.HPManager.Hp;
             //enemyHp = enemyHp - damage;
-            DestroyKnive();
+            DestroyKnife();
         }
     }
 
@@ -38,13 +38,13 @@ public class KniveScript : MonoBehaviour
             yield return new WaitForSeconds(lifeSpan);
 
             //dann zerstöre Messer
-            DestroyKnive();
+            DestroyKnife();
         }
     }
 
-    private void DestroyKnive(){
+    private void DestroyKnife(){
         StopCoroutine(throwRoutine);  
-        GameObject.Destroy(knive);
+        GameObject.Destroy(knife);
     }
 }
 
